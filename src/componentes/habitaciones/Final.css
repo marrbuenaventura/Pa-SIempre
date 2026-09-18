@@ -1,0 +1,115 @@
+.final-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 1.5s ease;
+}
+
+.final-wrapper.desvanecer {
+    opacity: 0;
+}
+
+.final-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.final-mensaje-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
+    animation: aparecerMensaje 0.8s ease-out;
+}
+
+.final-mensaje-texto {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.2rem;
+    font-style: italic;
+    color: #fffffe;
+    text-align: center;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    max-width: 700px;
+    padding: 0 40px;
+}
+
+.final-click {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+}
+
+.final-creditos-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    cursor: pointer;
+}
+
+.final-creditos-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.credito-linea {
+    text-align: center;
+    opacity: 0;
+    animation: aparecerCredito 0.8s ease-out forwards;
+}
+
+.credito-rol {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.credito-nombre {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #fffffe;
+}
+
+@keyframes aparecerCredito {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecerMensaje {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

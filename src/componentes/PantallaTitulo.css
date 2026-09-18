@@ -1,0 +1,208 @@
+/* ==========================================
+   PANTALLA TÍTULO
+   ========================================== */
+
+.pantalla-titulo {
+    animation: aparecerTitulo 1s ease-in;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #8f4a0e;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.15) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.15) 2px, transparent 2px);
+    background-size: 64px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', monospace;
+    image-rendering: pixelated;
+}
+
+@keyframes aparecerTitulo {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Ladrillos arriba y abajo*/
+.pantalla-titulo::before,
+.pantalla-titulo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: #8b3a1f;
+    background-image:
+        repeating-linear-gradient(90deg,
+            #6e2c17 0px, #6e2c17 60px, #8b3a1f 60px, #8b3a1f 64px);
+    border-bottom: 4px solid #4d2f1c;
+    border-top: 4px solid #4d2f1c;
+    z-index: 1;
+}
+
+.pantalla-titulo::before {
+    top: 0;
+}
+
+.pantalla-titulo::after {
+    bottom: 0;
+}
+
+.aviso-inicio {
+    position: absolute;
+    top: 18px;
+    font-size: 0.6rem;
+    color: #fffffe;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 3;
+    text-align: center;
+}
+
+.titulo-para-siempre {
+    font-size: 3.2rem;
+    color: #ffcb3f;
+    text-shadow:
+        4px 4px 0 #8b3a1f,
+        8px 8px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    z-index: 2;
+}
+
+/* Estrellitas decorativas flotando */
+.estrella {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #8a4fd6;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+            50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    filter: drop-shadow(0 0 6px #b47dff);
+    animation: flotarEstrella 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+.estrella.e1 {
+    top: 20%;
+    left: 12%;
+    animation-delay: 0s;
+}
+
+.estrella.e2 {
+    top: 15%;
+    left: 78%;
+    animation-delay: 0.6s;
+}
+
+.estrella.e3 {
+    top: 62%;
+    left: 20%;
+    animation-delay: 1.1s;
+}
+
+.estrella.e4 {
+    top: 65%;
+    left: 82%;
+    animation-delay: 1.6s;
+}
+
+@keyframes flotarEstrella {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(15deg);
+    }
+}
+
+/* Botón de avatar para elegir personaje */
+.avatar-elegir {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    z-index: 2;
+}
+
+.avatar-elegir img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid #7a0192;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 63, 229, 0.6);
+}
+
+.avatar-silueta {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #9a9a9a;
+    border: 4px solid #8103b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #fffffe;
+}
+
+.texto-elegir {
+    font-size: 0.55rem;
+    color: #fffffe;
+    text-shadow: 2px 2px 0 #000;
+    text-align: center;
+    max-width: 110px;
+}
+
+/* Botón central TE AMO <3 */
+.btn-te-amo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.9rem;
+    color: #fffffe;
+    background: #8a4fd6;
+    border: 4px solid #5c2f96;
+    border-radius: 30px;
+    padding: 16px 36px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #5c2f96, 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.15s ease;
+    z-index: 2;
+}
+
+.btn-te-amo:hover {
+    transform: translateY(-2px);
+}
+
+.btn-te-amo:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #5c2f96, 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.firma-autor {
+    position: absolute;
+    bottom: 18px;
+    right: 5%;
+    font-size: 0.6rem;
+    color: #fffffe;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 3;
+}

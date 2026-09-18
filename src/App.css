@@ -1,0 +1,100 @@
+/* ==========================================
+PA SIEMPRE - VARIABLES Y ESTILOS GLOBALES
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Lexend:wght@300;400;600;700&family=Press+Start+2P&display=swap');
+
+:root {
+  --bg-wood-dark: #160c06;
+  --bg-wood-light: #2c1a0e;
+  --paper-color: #9b8244;
+  --paper-border: #d7c49e;
+  --text-dark: #3a2312;
+  --text-light: #f5ede0;
+  --gold-accent: #d4af37;
+  --diamond-cyan: #00f0ff;
+  --btn-wood: #8e5a3c;
+  --btn-wood-hover: #a66d4a;
+  --btn-wood-border: #4d2f1c;
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-wood-dark);
+  font-family: 'Lexend', sans-serif;
+  color: var(--text-light);
+  overflow: hidden;
+  user-select: none;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: radial-gradient(circle, var(--bg-wood-light) 0%, var(--bg-wood-dark) 80%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.personaje-habitacion {
+  position: fixed;
+  bottom: 20px;
+  right: 3%;
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  z-index: 20;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
+  pointer-events: none;
+}
+
+.splash-titulo {
+  font-family: 'EB Garamond', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--gold-accent);
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.2rem;
+  position: absolute;
+  top: 15%;
+  opacity: 0;
+  animation: introTitulo 3.5s forwards cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes introTitulo {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    filter: blur(10px);
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: scale(1.02) translateY(0);
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 0.15;
+    transform: scale(0.95) translateY(-20px);
+    filter: blur(2px);
+  }
+}
+
+.custom-cursor {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23d4af37" stroke="%23160c06" stroke-width="1.5" d="M4 2 L4 20 L9 16 L12 22 L15 20.5 L12 14.5 L18 14.5 Z"/></svg>'), auto;
+}

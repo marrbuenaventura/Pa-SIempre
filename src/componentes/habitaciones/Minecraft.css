@@ -1,0 +1,285 @@
+/* ==========================================
+   PA SIEMPRE - ESTILOS MINECRAFT (DEFENSA DE BASE)
+   ========================================== */
+
+.mc-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #1a2a1b 0%, #0d160e 90%);
+    /* Verde bosque oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #f5ede0;
+    font-family: 'Lexend', sans-serif;
+    position: relative;
+}
+
+/* ==========================================
+     FASE 1: EXPLORACIÓN
+     ========================================== */
+
+.mc-fase-explorar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    gap: 20px;
+}
+
+.mc-titulo-zona {
+    text-align: center;
+}
+
+.mc-titulo-zona h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    color: #2ecc71;
+    /* Verde esmeralda */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+
+.mc-titulo-zona p {
+    font-size: 1rem;
+    color: #a7a9be;
+}
+
+/* Escena de exploración - Carga de fondo */
+.mc-escena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-image: url('../../../public/minecraft_fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 8px solid #4a2811;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+/* Hotspots Minecraft */
+.hotspot.cofre {
+    top: 65%;
+    left: 35%;
+}
+
+.hotspot.crafteo {
+    top: 65%;
+    left: 25%;
+}
+
+.hotspot.billy {
+    top: 48%;
+    left: 49%;
+    background-color: rgba(46, 204, 113, 0.25);
+    border-color: #00f0ff;
+}
+
+.hotspot.billy:hover {
+    background-color: rgba(46, 204, 113, 0.7);
+    box-shadow: 0 0 20px #00f0ff;
+}
+
+/* Diálogo de exploración */
+.mc-dialogo {
+    background-color: #f7eed7;
+    color: #3a2312;
+    border: 4px double #d7c49e;
+    border-radius: 8px;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    box-shadow: inset 0 0 15px rgba(90, 50, 20, 0.1), 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ==========================================
+     FASE 2: COMBATE (CAMPO DE BATALLA)
+     ========================================== */
+
+.mc-fase-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    gap: 20px;
+}
+
+.mc-interfaz {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #55a630;
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.marcador-titulo-mc {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    color: #2ecc71;
+    text-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+}
+
+.marcador-restantes-mc {
+    font-size: 0.85rem;
+    color: #a7a9be;
+}
+
+/* Corazones de vida estilo Minecraft */
+.mc-corazones {
+    display: flex;
+    gap: 4px;
+}
+
+.corazon-vida {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+    animation: latirCorazon 1s infinite alternate ease-in-out;
+}
+
+.corazon-vida.vacio {
+    filter: grayscale(1) opacity(0.3);
+    animation: none;
+}
+
+@keyframes latirCorazon {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+}
+
+/* El Campo de batalla 2D */
+.mc-campo-batalla {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    background-color: #121c13;
+    /* Textura de pasto pixelado usando gradientes */
+    background-image:
+        linear-gradient(45deg, #162417 25%, transparent 25%),
+        linear-gradient(-45deg, #162417 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #162417 75%),
+        linear-gradient(-45deg, transparent 75%, #162417 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+    border: 6px solid #4a2811;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.6),
+        inset 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+/* Billy en el Centro de la plataforma */
+.mc-billy-centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.mc-billy-sprite {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 8px #00f0ff);
+    z-index: 3;
+    animation: flotarHachaCentro 2s infinite ease-in-out;
+}
+
+.mc-plataforma-madera {
+    width: 50px;
+    height: 12px;
+    background-color: #8c532b;
+    border: 2.5px solid #4a2811;
+    border-radius: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    margin-top: -6px;
+}
+
+@keyframes flotarHachaCentro {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Los Mobs enemigos */
+.mc-mob {
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: none;
+    padding: 0;
+    transition: transform 0.15s ease;
+}
+
+.mc-mob:hover {
+    transform: translate(-50%, -50%) scale(1.15) !important;
+}
+
+.mob-sprite {
+    font-size: 2.3rem;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* Barra de salud flotante arriba de cada mob */
+.mob-barra-vida {
+    width: 24px;
+    height: 4px;
+    background-color: #2ecc71;
+    border: 1px solid #000;
+    margin-top: -2px;
+    border-radius: 1px;
+}
+
+.mc-mob.creeper .mob-barra-vida {
+    background-color: #e67e22;
+    /* Creeper con barra de aviso */
+}
+
+.mc-instrucciones {
+    font-size: 0.9rem;
+    color: #a7a9be;
+    text-align: center;
+}
+
+/* ==========================================
+     FASE 3: GANADO / PERDIDO (PERGAMINOS)
+     ========================================== */
+
+.mc-fase-ganado,
+.mc-fase-perdido {
+    width: 100%;
+    max-width: 550px;
+    animation: abrirCarta 1.2s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
+}

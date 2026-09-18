@@ -1,0 +1,451 @@
+/* ==========================================
+PA SIEMPRE - ESTILOS COCINA (SIMON SAYS)
+   ========================================== */
+
+.cocina-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #2d1a0e 0%, #160c06 90%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #f5ede0;
+    font-family: 'Lexend', sans-serif;
+    position: relative;
+}
+
+.cocina-fase-explorar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    gap: 20px;
+}
+
+.cocina-titulo-zona {
+    text-align: center;
+}
+
+.cocina-titulo-zona h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    color: #d4af37;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+
+.cocina-titulo-zona p {
+    font-size: 1rem;
+    color: #a7a9be;
+}
+
+/* Escena de exploración de la cocina */
+.cocina-escena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-image: url('../../../public/cocina_fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 8px solid #4a2811;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.item-imagen {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    pointer-events: none;
+    /* para que el click siga cayendo en el botón, no en la imagen */
+}
+
+/* Hotspots - Estilo pergamino con auras */
+.hotspot {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(247, 238, 215, 0.85);
+    border: 3px solid #d4af37;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+}
+
+.hotspot:hover {
+    transform: scale(1.2);
+    background-color: #f7eed7;
+    box-shadow: 0 0 15px #d4af37;
+}
+
+/* Coordenadas de los hotspots en la cocina */
+.hotspot.olla {
+    top: 55%;
+    left: 22%;
+}
+
+.hotspot.alacena {
+    top: 25%;
+    left: 60%;
+}
+
+.hotspot.heladera {
+    top: 40%;
+    left: 82%;
+    background-color: rgba(120, 220, 255, 0.25);
+    border-color: #78dcff;
+}
+
+.hotspot.heladera:hover {
+    background-color: rgba(120, 220, 255, 0.7);
+    box-shadow: 0 0 20px #78dcff;
+}
+
+.hotspot.pulsando {
+    animation: pulsoHeladera 2s infinite ease-in-out;
+}
+
+@keyframes pulsoHeladera {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(120, 220, 255, 0.5);
+    }
+
+    50% {
+        transform: scale(1.12);
+        box-shadow: 0 0 25px rgba(120, 220, 255, 0.9);
+    }
+}
+
+.cocina-dialogo {
+    background-color: #f7eed7;
+    color: #3a2312;
+    border: 4px double #d7c49e;
+    border-radius: 8px;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    box-shadow: inset 0 0 15px rgba(90, 50, 20, 0.1), 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.dialogo-texto {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    text-align: center;
+    font-weight: 500;
+}
+
+.btn-empezar-juego {
+    background: linear-gradient(135deg, #2e8b57, #1c5c37);
+    color: #fffffe;
+    border: 3px solid #d4af37;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-empezar-juego:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #3aa76d, #2e8b57);
+}
+
+.btn-volver-mapa {
+    background: transparent;
+    border: 2px solid #8e5a3c;
+    color: #a66d4a;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.btn-volver-mapa:hover {
+    border-color: #d4af37;
+    color: #d4af37;
+    background-color: rgba(212, 175, 55, 0.05);
+}
+
+/* ==========================================
+     FASE 2: MINI-JUEGO (SIMON SAYS)
+     ========================================== */
+
+.cocina-fase-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 750px;
+    /* antes 500px */
+    gap: 28px;
+}
+
+.cocina-interfaz {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 28px;
+    /* antes 12px 20px */
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid #8e5a3c;
+    border-radius: 6px;
+}
+
+.marcador-titulo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    /* antes 0.7rem */
+    color: #d4af37;
+    align-self: center;
+}
+
+.marcador-estado {
+    font-size: 1.2rem;
+    /* antes 0.9rem */
+    color: #a7a9be;
+    align-self: center;
+}
+
+.grid-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    /* antes 14px */
+    width: 100%;
+}
+
+.item-boton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 16px;
+    border-radius: 14px;
+    border: 4px solid #4d2f1c;
+    background: #2c1a0e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.item-boton:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.item-imagen {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.item-boton .item-emoji {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.2s;
+}
+
+.item-boton:active:not(:disabled) .item-emoji {
+    transform: scale(0.85);
+}
+
+.item-boton .item-nombre {
+    font-size: 1rem;
+    /* antes 0.75rem */
+    font-weight: 700;
+    text-align: center;
+    color: #f5ede0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Hover genérico */
+.item-boton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    border-color: #8e5a3c;
+}
+
+/* Colores específicos de retroalimentación e iluminación de Simon Says */
+.item-boton.naranja:hover:not(:disabled),
+.item-boton.naranja.iluminado {
+    background-color: #ff9f43;
+    border-color: #fffffe;
+    box-shadow: 0 0 20px rgba(255, 159, 67, 0.8);
+    transform: scale(1.05);
+}
+
+.item-boton.rojo:hover:not(:disabled),
+.item-boton.rojo.iluminado {
+    background-color: #ee5253;
+    border-color: #fffffe;
+    box-shadow: 0 0 20px rgba(238, 82, 83, 0.8);
+    transform: scale(1.05);
+}
+
+.item-boton.amarillo:hover:not(:disabled),
+.item-boton.amarillo.iluminado {
+    background-color: #feca57;
+    border-color: #fffffe;
+    box-shadow: 0 0 20px rgba(254, 202, 87, 0.8);
+    transform: scale(1.05);
+}
+
+.item-boton.marron:hover:not(:disabled),
+.item-boton.marron.iluminado {
+    background-color: #a0522d;
+    border-color: #fffffe;
+    box-shadow: 0 0 20px rgba(160, 82, 45, 0.8);
+    transform: scale(1.05);
+}
+
+.item-boton.chocolate:hover:not(:disabled),
+.item-boton.chocolate.iluminado {
+    background-color: #8b4513;
+    border-color: #fffffe;
+    box-shadow: 0 0 20px rgba(139, 69, 19, 0.8);
+    transform: scale(1.05);
+}
+
+.cocina-instrucciones {
+    font-size: 0.9rem;
+    color: #a7a9be;
+    text-align: center;
+}
+
+/* ==========================================
+     FASE 3: GANADO / PERDIDO (PERGAMINOS)
+     ========================================== */
+
+.cocina-fase-ganado,
+.cocina-fase-perdido {
+    width: 100%;
+    max-width: 550px;
+    animation: abrirCarta 1.2s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.carta-pergamino-ganado,
+.carta-pergamino-perdido {
+    background-color: #f7eed7;
+    color: #3a2312;
+    border: 10px double #d7c49e;
+    border-radius: 6px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(90, 50, 20, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.carta-pergamino-ganado h2 {
+    color: #27ae60;
+    font-family: 'EB Garamond', serif;
+    font-size: 2.2rem;
+}
+
+.carta-pergamino-perdido h2 {
+    color: #c0392b;
+    font-family: 'EB Garamond', serif;
+    font-size: 2.2rem;
+}
+
+.billy-recompensa-logo {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 10px #e1b12c);
+    animation: latirLlave 2s infinite ease-in-out;
+}
+
+@keyframes latirLlave {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 6px #e1b12c);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 14px #e1b12c);
+    }
+}
+
+.mensaje-victoria {
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+.reaccion-billy {
+    font-style: italic;
+    font-weight: 600;
+    color: #7f8c8d;
+    border-left: 4px solid #d4af37;
+    padding-left: 15px;
+    margin: 10px 0;
+    font-size: 1.05rem;
+}
+
+.btn-reclamar-pieza {
+    background: linear-gradient(135deg, #27ae60, #2196f3);
+    color: #fffffe;
+    border: 3px solid #d4af37;
+    border-radius: 4px;
+    padding: 14px 30px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    transition: all 0.2s;
+    font-family: 'Lexend', sans-serif;
+}
+
+.btn-reclamar-pieza:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+    filter: brightness(1.1);
+}
+
+.perdido-botones {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn-reintentar {
+    flex: 1;
+    background: var(--btn-wood);
+    color: var(--text-light);
+    border: 3px solid var(--btn-wood-border);
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-reintentar:hover {
+    background-color: var(--btn-wood-hover);
+    transform: translateY(-2px);
+}

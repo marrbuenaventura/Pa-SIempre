@@ -1,0 +1,97 @@
+/* ==========================================
+   PANTALLA DE BIENVENIDA - ESTILO GLOBO COMIC
+   ========================================== */
+
+.bienvenida-escena {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg-wood-dark);
+}
+
+.personaje-dialogo {
+    position: absolute;
+    bottom: 0;
+    left: 2%;
+    width: 350px;
+    height: auto;
+    object-fit: contain;
+    z-index: 5;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.6));
+    animation: aparecerPersonaje 0.6s ease-out;
+}
+
+.globo-dialogo {
+    position: absolute;
+    bottom: 300px;
+    left: 30%;
+    max-width: 600px;
+    background-color: #fdfaf3;
+    border: 4px solid #2c1a0e;
+    border-radius: 24px;
+    padding: 28px 34px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.15s ease;
+    z-index: 6;
+}
+
+.globo-dialogo:hover {
+    transform: translateY(-3px);
+}
+
+.globo-texto {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #2c1a0e;
+    font-weight: 500;
+    margin: 0;
+}
+
+.globo-cola {
+    position: absolute;
+    bottom: -18px;
+    left: 70px;
+    width: 34px;
+    height: 34px;
+    background-color: #fdfaf3;
+    border-left: 4px solid #2c1a0e;
+    border-bottom: 4px solid #2c1a0e;
+    border-radius: 0 0 0 65%;
+    transform: rotate(-35deg);
+}
+
+
+.continuar {
+    position: absolute;
+    bottom: 210px;
+    left: 24%;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #150a18;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    z-index: 6;
+    transition: opacity 0.2s ease;
+}
+
+.click-texto:hover {
+    opacity: 0.7;
+}
+
+@keyframes aparecerPersonaje {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

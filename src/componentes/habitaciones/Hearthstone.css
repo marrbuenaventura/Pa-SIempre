@@ -1,0 +1,531 @@
+/* ==========================================
+   PA SIEMPRE - ESTILOS HEARTHSTONE (MEMOTEST)
+   ========================================== */
+
+.hs-room-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #2d1a0e 0%, #160c06 90%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    color: #f5ede0;
+    font-family: 'Lexend', sans-serif;
+}
+
+/* ==========================================
+     FASE 1: EXPLORACIÓN
+     ========================================== */
+
+.hs-fase-explorar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    gap: 20px;
+}
+
+.hs-titulo-zona {
+    text-align: center;
+}
+
+.hs-titulo-zona h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    color: #00a8ff;
+    /* Azul mágico Hearthstone */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+
+.hs-titulo-zona p {
+    font-size: 1rem;
+    color: #a7a9be;
+}
+
+/* Escena de exploración con fondo de madera fallback */
+.hs-escena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #2c1a0e;
+    background-image: url('../../../public/Hearthstone_fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 8px solid #4a2811;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+/* Hotspots de Hearthstone */
+.hotspot-hs {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(245, 235, 224, 0.85);
+    /* Pergamino */
+    border: 3px solid #00a8ff;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+}
+
+.hotspot-hs:hover {
+    transform: scale(1.2);
+    background-color: #f5ebe0;
+    box-shadow: 0 0 15px #00a8ff;
+}
+
+/* Coordenadas en la escena */
+.hotspot-hs.mazo {
+    top: 15%;
+    left: 40%;
+}
+
+.hotspot-hs.mate {
+    top: 60%;
+    left: 20%;
+}
+
+.hotspot-hs.carta {
+    top: 50%;
+    left: 55%;
+    background-color: rgba(0, 168, 255, 0.25);
+    border-color: #e1b12c;
+}
+
+.hotspot-hs.carta:hover {
+    background-color: rgba(0, 168, 255, 0.7);
+    box-shadow: 0 0 20px #e1b12c;
+}
+
+.hotspot-hs.pulsando {
+    animation: pulsoCartaHs 2s infinite ease-in-out;
+}
+
+@keyframes pulsoCartaHs {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(225, 177, 44, 0.5);
+    }
+
+    50% {
+        transform: scale(1.12);
+        box-shadow: 0 0 25px rgba(225, 177, 44, 0.9);
+    }
+}
+
+/* Diálogo de exploración */
+.hs-dialogo {
+    background-color: #f5ebe0;
+    color: #3a2312;
+    border: 4px double #d7c49e;
+    border-radius: 8px;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    box-shadow: inset 0 0 15px rgba(90, 50, 20, 0.15), 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-empezar-hs {
+    background: linear-gradient(135deg, #00a8ff, #0097e6);
+    color: #fffffe;
+    border: 3px solid #e1b12c;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease-in-out;
+    font-family: 'Lexend', sans-serif;
+}
+
+.btn-empezar-hs:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #4cd137, #44bd32);
+    box-shadow: 0 6px 12px rgba(225, 177, 44, 0.4);
+}
+
+/* ==========================================
+     FASE 2: MINI-JUEGO DE MEMORIA (TABLERO)
+     ========================================== */
+
+.hs-fase-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    gap: 20px;
+}
+
+.hs-marcador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #e1b12c;
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.hs-marcador-titulo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    color: #e1b12c;
+    margin-bottom: 5px;
+}
+
+.hs-marcador-desc {
+    font-size: 0.95rem;
+    color: #a7a9be;
+}
+
+.hearthstone-tablero {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, auto);
+    gap: 10px;
+    width: 92vw;
+    max-width: 900px;
+    padding: 16px;
+    background-color: #2c1a0e;
+    border: 5px solid #4d2f1c;
+    border-radius: 8px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+}
+
+.carta-memoria {
+    width: 100%;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.carta-interior {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3.1;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* Efecto volteado */
+.carta-memoria.volteada .carta-interior {
+    transform: rotateY(180deg);
+}
+
+.carta-reverso,
+.carta-frente {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    border: 3px solid #8e5a3c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Reverso de la carta (Boca abajo) */
+.carta-reverso {
+    background-color: #1a2d42;
+    /* Azul marino */
+    background-image: radial-gradient(circle at center, #273c54 10%, #1a2d42 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #4a2811;
+}
+
+.reverso-diseño {
+    width: 85%;
+    height: 85%;
+    border: 2px solid #e1b12c;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(225, 177, 44, 0.05);
+}
+
+.reverso-simbolo {
+    font-size: 2.2rem;
+    color: #00a8ff;
+    text-shadow: 0 0 10px rgba(0, 168, 255, 0.6);
+    animation: rotarPortal 6s linear infinite;
+}
+
+@keyframes rotarPortal {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================
+     MAQUETA DE LA CARTA EN CSS (FRENTE)
+     ========================================== */
+
+.carta-frente.hs-carta-maqueta {
+    background-color: #ceb691;
+    background-image: radial-gradient(circle, #ecdcb9 0%, #dfd0b8 80%);
+    transform: rotateY(180deg);
+    border: 3.5px solid #d4af37;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+/* Burbuja de Maná (Costo) */
+.hs-mana-bubble {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 24px;
+    height: 24px;
+    background-color: #02598f;
+    background-image: radial-gradient(circle at 35% 35%, #05a4fc, #02598f);
+    border: 1.5px solid #fffffe;
+    border-radius: 50%;
+    color: #fffffe;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* Ilustración (Óvalo de la carta) */
+.hs-carta-ilustracion {
+    width: 82%;
+    height: 48%;
+    margin: 12% auto 0 auto;
+    border-radius: 50% / 40%;
+    border: 2.5px solid #4a2811;
+    background-color: #3b2212;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hs-ilustracion-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.hs-ilustracion-fallback {
+    font-size: 2.4rem;
+    z-index: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.hs-carta-nombre-cinta {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    width: 110%;
+    background: linear-gradient(to bottom, #5d351a, #3d2110);
+    border-top: 1.5px solid #d4af37;
+    border-bottom: 1.5px solid #d4af37;
+    transform: rotate(-1.5deg);
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hs-carta-nombre-cinta span {
+    color: #fffffe;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 1px #000;
+    white-space: nowrap;
+}
+
+/* Cuadro de texto de la habilidad */
+.hs-carta-descripcion {
+    width: 90%;
+    height: 32%;
+    margin: 16% auto 0 auto;
+    background-color: rgba(245, 235, 224, 0.85);
+    border: 1.5px solid #bda286;
+    border-radius: 3px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.hs-carta-descripcion p {
+    color: #311c0e;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Burbujas de estadísticas (Ataque y Vida) */
+.hs-stat-bubble {
+    position: absolute;
+    bottom: -3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    border: 1.5px solid #fffffe;
+    color: #fffffe;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.hs-stat-bubble.ataque {
+    left: -3px;
+    background-color: #d19a00;
+    background-image: radial-gradient(circle at 35% 35%, #ffd700, #d19a00);
+}
+
+.hs-stat-bubble.vida {
+    right: -3px;
+    background-color: #b31010;
+    background-image: radial-gradient(circle at 35% 35%, #ff3b3b, #b31010);
+}
+
+/* Bordes Dorados de Leyenda (Dragón en la parte superior) */
+.frente-marco-legendario {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 7;
+}
+
+/* Parejas Encontradas (Brillo dorado persistente) */
+.carta-memoria.encontrada .carta-frente {
+    border-color: #27ae60;
+    box-shadow: 0 0 15px rgba(39, 174, 96, 0.6);
+    animation: pulsoMatch 1.5s infinite alternate;
+}
+
+@keyframes pulsoMatch {
+    to {
+        box-shadow: 0 0 25px rgba(39, 174, 96, 0.9);
+    }
+}
+
+.hs-instrucciones {
+    font-size: 0.9rem;
+    color: #a7a9be;
+    text-align: center;
+}
+
+/* ==========================================
+     FASE 3: GANADO (PERGAMINO DE VICTORIA)
+     ========================================== */
+
+.hs-fase-ganado {
+    width: 100%;
+    max-width: 550px;
+    animation: abrirCarta 1.2s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hs-pergamino-resultado {
+    background-color: #f5ebe0;
+    color: #3a2312;
+    border: 10px double #d7c49e;
+    border-radius: 6px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(90, 50, 20, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.hs-pergamino-resultado.victoria h2 {
+    color: #00a8ff;
+    font-family: 'EB Garamond', serif;
+    font-size: 2.2rem;
+}
+
+.btn-reclamar-pieza-hs {
+    background: linear-gradient(135deg, #27ae60, #2196f3);
+    color: #fffffe;
+    border: 3px solid #00f0ff;
+    border-radius: 4px;
+    padding: 14px 30px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 240, 255, 0.3);
+    transition: all 0.2s;
+    font-family: 'Lexend', sans-serif;
+}
+
+.btn-reclamar-pieza-hs:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 240, 255, 0.6);
+    filter: brightness(1.1);
+}

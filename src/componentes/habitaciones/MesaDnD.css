@@ -1,0 +1,516 @@
+/* ==========================================
+PA SIEMPRE - ESTILOS MESA D&D (COZY-RPG)
+   ========================================== */
+
+.dnd-room-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #2d1a0e 0%, #160c06 90%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #f5ede0;
+    font-family: 'Lexend', sans-serif;
+}
+
+/* ==========================================
+    FASE 1: EXPLORACIÓN
+     ========================================== */
+
+.dnd-fase-explorar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    gap: 20px;
+}
+
+.dnd-titulo-zona {
+    text-align: center;
+}
+
+.dnd-titulo-zona h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    color: #218c74;
+    /* Verde D&D esmeralda */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+
+.dnd-titulo-zona p {
+    font-size: 1rem;
+    color: #a7a9be;
+}
+
+/* Escena de exploración con imagen de fondo */
+.dnd-escena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-image: url('../../../public/dnd_mesa_fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 8px solid #4a2811;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.dnd-escena::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Hotspots de D&D */
+.hotspot-dnd {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(245, 235, 224, 0.85);
+    /* Pergamino */
+    border: 3px solid #218c74;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+}
+
+.hotspot-dnd:hover {
+    transform: scale(1.2);
+    background-color: #f5ebe0;
+    box-shadow: 0 0 15px #218c74;
+}
+
+/* Posiciones basadas en la ilustración del plano */
+.hotspot-dnd.hoja {
+    top: 80%;
+    left: 45%;
+}
+
+.hotspot-dnd.libros {
+    top: 10%;
+    left: 35%;
+}
+
+.hotspot-dnd.vela {
+    top: 10%;
+    left: 5%;
+}
+
+.hotspot-dnd.dado {
+    top: 48%;
+    left: 50%;
+    background-color: rgba(33, 140, 116, 0.25);
+    border-color: #d4af37;
+}
+
+.hotspot-dnd.dado:hover {
+    background-color: rgba(33, 140, 116, 0.7);
+    box-shadow: 0 0 20px #d4af37;
+}
+
+.hotspot-dnd.pulsando {
+    animation: pulsoDadoDnd 2s infinite ease-in-out;
+}
+
+@keyframes pulsoDadoDnd {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    50% {
+        transform: scale(1.12);
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.9);
+    }
+}
+
+/* Diálogo de exploración */
+.dnd-dialogo {
+    background-color: #f5ebe0;
+    color: #3a2312;
+    border: 4px double #d7c49e;
+    border-radius: 8px;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    box-shadow: inset 0 0 15px rgba(90, 50, 20, 0.15), 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-empezar-dnd {
+    background: linear-gradient(135deg, #218c74, #1b7460);
+    color: #fffffe;
+    border: 3px solid #d4af37;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease-in-out;
+    font-family: 'Lexend', sans-serif;
+}
+
+.btn-empezar-dnd:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #2ecc71, #218c74);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================
+    FASE 2: JUEGO NARRATIVO Y DADO D20
+     ========================================== */
+
+.dnd-fase-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    gap: 25px;
+}
+
+.dnd-progreso {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #218c74;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.exito-contador {
+    color: #d4af37;
+}
+
+/* Tarjeta Pergamino para la Historia */
+.dnd-tarjeta-historia {
+    background-color: #f5ebe0;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
+    background-size: 20px 20px;
+    color: #2c1a0e;
+    border: 8px double #d7c49e;
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(90, 50, 20, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dnd-tarjeta-historia h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.8rem;
+    color: #1b7460;
+    text-align: center;
+    border-bottom: 2px dashed #d7c49e;
+    padding-bottom: 8px;
+}
+
+.dnd-texto-narrativa {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    text-align: center;
+    font-style: normal;
+}
+
+.dnd-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.dnd-btn-opcion {
+    background-color: #e5d5c5;
+    border: 2px solid #bda286;
+    color: #3a2312;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: left;
+    font-family: 'Lexend', sans-serif;
+}
+
+.dnd-btn-opcion:hover {
+    background-color: #218c74;
+    border-color: #1b7460;
+    color: #fffffe;
+    transform: translateX(5px);
+}
+
+/* El dado D20 */
+.dnd-dado-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.dnd-d20-container {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+    transition: transform 0.3s;
+}
+
+.dnd-d20-container.girando {
+    animation: rodarD20 1.2s ease-out infinite;
+}
+
+.dnd-d20-container.quiet {
+    animation: flotarDado 3s infinite ease-in-out;
+}
+
+@keyframes rodarD20 {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.1) rotate(180deg) translateY(-10px);
+    }
+
+    50% {
+        transform: scale(0.9) rotate(360deg) translateY(10px);
+    }
+
+    75% {
+        transform: scale(1.1) rotate(540deg) translateY(-5px);
+    }
+
+    100% {
+        transform: scale(1) rotate(720deg) translateY(0);
+    }
+}
+
+@keyframes flotarDado {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.d20-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.d20-svg polygon {
+    transition: fill 0.5s;
+}
+
+.dnd-estado-roll {
+    font-size: 0.9rem;
+    color: #d4af37;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    animation: parpadear 1s infinite;
+}
+
+@keyframes parpadear {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* ==========================================
+     FASE 3: PANTALLA RESULTADO TIRADA
+     ========================================== */
+
+.dnd-dado-resultado-ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.dnd-dado-badge {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: #fffffe;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.dnd-dado-badge.pifia {
+    background-color: #c0392b;
+    /* Rojo */
+}
+
+.dnd-dado-badge.parcial {
+    background-color: #d35400;
+    /* Naranja */
+}
+
+.dnd-dado-badge.exito {
+    background-color: #27ae60;
+    /* Verde */
+}
+
+.dnd-dado-badge.critico {
+    background-color: #d4af37;
+    /* Dorado */
+    box-shadow: 0 0 12px #d4af37;
+    animation: pulsoCritico 1.5s infinite alternate;
+}
+
+@keyframes pulsoCritico {
+    to {
+        box-shadow: 0 0 20px #ffd700;
+    }
+}
+
+.dnd-rango-desc {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #5d4037;
+}
+
+.dnd-texto-resultado {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    text-align: center;
+    color: #4a2c11;
+    background-color: rgba(90, 50, 20, 0.12);
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 5px solid #bda286;
+}
+
+.dnd-btn-continuar {
+    background-color: #1b7460;
+    color: #fffffe;
+    border: 2px solid #d4af37;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Lexend', sans-serif;
+    text-align: center;
+}
+
+.dnd-btn-continuar:hover {
+    background-color: #218c74;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+     FASE 4: GANADO / PERDIDO (PERGAMINOS)
+     ========================================== */
+
+.dnd-fase-ganado,
+.dnd-fase-perdido {
+    width: 100%;
+    max-width: 550px;
+    animation: abrirCarta 1.2s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dnd-pergamino-resultado {
+    background-color: #f5ebe0;
+    color: #3a2312;
+    border: 10px double #d7c49e;
+    border-radius: 6px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(90, 50, 20, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.dnd-pergamino-resultado.victoria h2 {
+    color: #27ae60;
+    font-family: 'EB Garamond', serif;
+    font-size: 2.2rem;
+}
+
+.dnd-pergamino-resultado.derrota h2 {
+    color: #c0392b;
+    font-family: 'EB Garamond', serif;
+    font-size: 2.2rem;
+}
+
+.btn-reclamar-pieza-dnd {
+    background: linear-gradient(135deg, #27ae60, #2196f3);
+    color: #fffffe;
+    border: 3px solid #00f0ff;
+    border-radius: 4px;
+    padding: 14px 30px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 240, 255, 0.3);
+    transition: all 0.2s;
+    font-family: 'Lexend', sans-serif;
+}
+
+.btn-reclamar-pieza-dnd:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 240, 255, 0.6);
+    filter: brightness(1.1);
+}
+
+.perdido-botones-dnd {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn-reintentar-dnd {
+    flex: 1;
+    background: var(--btn-wood);
+    color: var(--text-light);
+    border: 3px solid var(--btn-wood-border);
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-reintentar-dnd:hover {
+    background-color: var(--btn-wood-hover);
+    transform: translateY(-2px);
+}
